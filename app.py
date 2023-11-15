@@ -38,6 +38,10 @@ db_config = {
 CORS(app)
 
 
+@app.route('/')
+def hello():
+    return "hello"
+
 # Check if an email is already registered
 def is_email_registered(email):
     connection = pymysql.connect(**db_config)
@@ -313,6 +317,23 @@ def save_steps():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/save_fasting', methods=['POST'])
+def save_fasting():
+    try:
+        data = request.get_json()
+        amount = data['amount']
+        user_id = data['user_id']  # Make sure to include 'user_id' in the JSON data
+
+        with pymysql.connect(**db_config) as conn:
+            with conn.cursor() as cursor:
+                # Assuming your step_data table has a 'user_id' column
+                cursor.execute("INSERT INTO fast_data (user_id, amount) VALUES (%s, %s)", (user_id, amount))
+                conn.commit()
+
+        return jsonify({'message': 'Steps saved successfully'}), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
