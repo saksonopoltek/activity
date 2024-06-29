@@ -1,11 +1,10 @@
 # Importing libraries
-from flask import Flask, request, jsonify, session, render_template, redirect, url_for, flash
+from flask import Flask, request, jsonify, session, render_template
 from flask_mail import Mail, Message
-from flask_session import Session
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, decode_token
+from flask_jwt_extended import JWTManager, create_access_token, decode_token
 from datetime import timedelta, datetime
 from flask_cors import CORS
-import pymysql
+import pymysql.cursors
 from itsdangerous import SignatureExpired, BadSignature
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -31,7 +30,8 @@ db_config = {
     'host': 'localhost',
     'user': 'root',
     'password': '',
-    'db': 'dailyku'
+    'db': 'dailyku',
+    'cursorclass': pymysql.cursors.DictCursor
 }
 # Global set to store active access tokens
 access_token_set = set()
