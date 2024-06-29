@@ -4,7 +4,7 @@ from flask_mail import Mail, Message
 from flask_jwt_extended import JWTManager, create_access_token, decode_token
 from datetime import timedelta, datetime
 from flask_cors import CORS
-import pymysql.cursors
+import pymysql
 from itsdangerous import SignatureExpired, BadSignature
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -30,8 +30,7 @@ db_config = {
     'host': 'localhost',
     'user': 'root',
     'password': '',
-    'db': 'dailyku',
-    'cursorclass': pymysql.cursors.DictCursor
+    'db': 'dailyku'
 }
 # Global set to store active access tokens
 access_token_set = set()
