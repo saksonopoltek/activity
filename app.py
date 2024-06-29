@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify, session, render_template, redirect, u
 from flask_mail import Mail, Message
 from flask_session import Session
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, decode_token
-import pymysql
 from datetime import timedelta, datetime
 from flask_cors import CORS
 import pymysql
