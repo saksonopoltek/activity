@@ -29,7 +29,7 @@ jwt = JWTManager(app)
 db_config = {
     'host': 'sumantri.mysql.pythonanywhere-services.com',
     'user': 'sumantri',
-    'password': 'sumantri.mysql.pythonanywhere-services.com',
+    'password': 'Gj5^jMCF',
     'db': 'sumantri$dailyku'
 }
 # Global set to store active access tokens
