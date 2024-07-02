@@ -27,10 +27,10 @@ jwt = JWTManager(app)
 
 # MySQL database configuration
 db_config = {
-    'host': 'localhost',
-    'user': 'root',
-    'password': '',
-    'db': 'dailyku'
+    'host': 'sumantri.mysql.pythonanywhere-services.com',
+    'user': 'sumantri',
+    'password': 'sumantri.mysql.pythonanywhere-services.com',
+    'db': 'sumantri$dailyku'
 }
 # Global set to store active access tokens
 access_token_set = set()
@@ -251,7 +251,7 @@ def send_reset_email(username, recipient, reset_token):
     try:
         subject = "Password Reset"
         sender_email = "19098001.sumantri@student.poltektegal.ac.id"
-        reset_link = f"http://192.168.48.172:5000/reset-password?token={reset_token}"
+        reset_link = f"http://192.168.43.165:5000/reset-password?token={reset_token}"
 
         body = f"Hello {username},\n\nClick the following link to reset your password: {reset_link}"
 
@@ -614,4 +614,4 @@ def read_water_data_route(user_id):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", debug=True)
